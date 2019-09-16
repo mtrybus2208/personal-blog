@@ -4566,6 +4566,10 @@ gatsby-plugin-client-side-redirect@^0.0.2:
   dependencies:
     fs-extra "^7.0.0"
 
+gatsby-plugin-google-fonts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-1.0.1.tgz#d71054f7bf207b9a8da227380369e18e6f4e0201"
+
 gatsby-plugin-manifest@^2.2.15:
   version "2.2.15"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.15.tgz#ad1574fa0375e37526b2a9368f7ea845082d42ee"

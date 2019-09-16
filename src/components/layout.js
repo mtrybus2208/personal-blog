@@ -1,11 +1,17 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import { StateContext } from '../context/globalContext';
+import styled from 'styled-components';
+ 
 import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children, lang }) => {
+
+  useEffect(() => {
+    
+  });
  
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
