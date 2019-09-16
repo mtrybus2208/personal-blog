@@ -1,8 +1,10 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import styled from 'styled-components';
 
-const Header = ({ siteTitle }) => (
+ 
+const Header = ({ siteTitle, links, lang }) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -18,7 +20,7 @@ const Header = ({ siteTitle }) => (
     >
       <h1 style={{ margin: 0 }}>
         <Link
-          to="/"
+          to={`/${lang}`}
           style={{
             color: `white`,
             textDecoration: `none`,
@@ -27,6 +29,23 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      {
+        links.map((item, i) => {
+          return (
+            <Link 
+              key={i}
+              to={item.link}
+              style={{
+                color: `white`,
+                textDecoration: `none`,
+                margin: `20px 10px`,
+              }}
+              >
+              {item.name}
+            </Link>
+          ) 
+        })
+      }
     </div>
   </header>
 )

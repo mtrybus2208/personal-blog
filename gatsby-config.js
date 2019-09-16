@@ -1,8 +1,38 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `MTDev blog`,
+    menuLinks: {
+      pl: [
+        {
+          name: 'blog',
+          link: '/pl'
+        },
+        {
+          name: 'portfolio',
+          link: '/pl/portfolio'
+        },
+        {
+          name: 'o mnie',
+          link: '/pl/about'
+        },
+      ],
+      en: [
+        {
+          name: 'blog',
+          link: '/en'
+        },
+        {
+          name: 'portfolio',
+          link: '/en/portfolio'
+        },
+        {
+          name: 'about me',
+          link: '/en/about'
+        },     
+      ]
+    },
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    author: `Michal Trybus`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,7 +42,7 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
-    },
+    }, 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -27,6 +57,16 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: 'MsR6FTXmrRHmv3J6Kofbpwtt',
+        homeSlug: 'home',
+        version: 'draft'
+      }
+    },
+    `gatsby-plugin-client-side-redirect`
+    
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
