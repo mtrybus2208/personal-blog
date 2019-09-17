@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useContext } from "react"
 import Icon from './Icon';
-import { StateContext } from '../context/globalContext';
+import { StateContext } from '../../context/globalContext';
 import styled from 'styled-components';
 
 const MenuButton = styled.span`
@@ -11,7 +11,6 @@ const MenuButton = styled.span`
     opacity: .5;
   }
 `;
-
  
 const Header = ({ siteTitle, links, lang }) => {
   const {

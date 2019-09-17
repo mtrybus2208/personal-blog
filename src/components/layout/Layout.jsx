@@ -1,16 +1,17 @@
 import React, { useEffect, useContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { StateContext } from '../context/globalContext';
+import { StateContext } from '../../context/globalContext';
 import styled from 'styled-components';
  
-import Header from "./header"
+import Grid from './Grid';
+import Header from "../shared/Header"
 import "./layout.css"
 
-const Layout = ({ children, lang }) => {
+const Layout = ({ children, lang, categories }) => {
 
   useEffect(() => {
-    
+    console.log({categories})
   });
  
   const data = useStaticQuery(graphql`
@@ -40,12 +41,33 @@ const Layout = ({ children, lang }) => {
      */
   return (
     <>
-      <Header
-        siteTitle={data.site.siteMetadata.title}
-        links={data.site.siteMetadata.menuLinks[lang]}
-        lang={lang}
-      />
-      <div
+      {/*  */}
+      <Grid>
+        <Grid.SidebarArea>
+          <div>SIDEBAR</div>
+          {
+            categories.map((cat, i) => (
+              <p>{++i}.{cat.node.name}</p>
+            ))
+          }
+        </Grid.SidebarArea>
+
+        <Grid.HeaderArea>
+          <Header
+            siteTitle={data.site.siteMetadata.title}
+            links={data.site.siteMetadata.menuLinks[lang]}
+            lang={lang}
+          />
+        </Grid.HeaderArea>
+        <main>{children}</main>
+        <footer>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        </footer>
+      </Grid>
+      {/*  */}
+      {/* <div
         style={{
           margin: `0 auto`,
           maxWidth: 960,
@@ -59,7 +81,7 @@ const Layout = ({ children, lang }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
+      </div> */}
     </>
   )
 }

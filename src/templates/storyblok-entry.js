@@ -1,6 +1,6 @@
 import React from 'react'
-import Components from '../components/components.js'
-import Layout from "../components/layout"
+import Components from '../components/layout/Components'
+import Layout from "../components/layout/Layout";
 
 class StoryblokEntry extends React.Component {
   static getDerivedStateFromProps(props, state) {

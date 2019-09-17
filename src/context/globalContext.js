@@ -13,7 +13,7 @@ export const StateProvider = props => {
   const [menuOpen, setMenu] = useState(false);
 
   useEffect(() => {
-    alert('teraz stan menu => ' + menuOpen)
+    console.log({menuOpen})
   }, [menuOpen])
  
   const toggleMenu = () => {

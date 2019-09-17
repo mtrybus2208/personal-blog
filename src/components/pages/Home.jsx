@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'gatsby';
-import { testExpr } from '../helpers/dataManipulation';
+import { testExpr } from '../../helpers/dataManipulation';
 
 import styled from 'styled-components';
 import PropTypes from 'prop-types';

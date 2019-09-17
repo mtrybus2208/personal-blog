@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import Category from '../components/category';
-import Layout from "../components/layout"
+import Category from '../components/pages/Category';
+import Layout from "../components/layout/Layout"
 import { Link } from "gatsby";
 
 const CategoryEntry = ({pageContext}) => {
@@ -9,7 +9,7 @@ const CategoryEntry = ({pageContext}) => {
   });
   // przefiltruj
   return (
-    <Layout lang={pageContext.lang}>
+    <Layout lang={pageContext.lang} categories={pageContext.categories}>
       <Category
         posts={pageContext.entries}
         category={pageContext.category}

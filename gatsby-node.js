@@ -10,7 +10,7 @@ exports.createPages = ({ graphql, actions }) => {
     resolve(
       graphql(
         `{
-          allStoryblokEntry {
+          pages: allStoryblokEntry {
             edges {
               node {
                 id
@@ -28,17 +28,28 @@ exports.createPages = ({ graphql, actions }) => {
               }
             } 
           }
+
+          categories: allStoryblokEntry(filter: {field_component: {eq: "category"}}) {
+            edges {
+              node {
+                name
+                full_slug
+                slug
+              }
+            }
+          } 
         }`
       ).then(result => {
         
- 
+     
+        
         if (result.errors) {
           console.log(result.errors)
           reject(result.errors)
         }
         
-
-        const entries = result.data.allStoryblokEntry.edges;
+        const categories = result.data.categories.edges;
+        const entries = result.data.pages.edges;
 
         const cats = ['js', 'react', 'angular', 'vue'];
         ['en', 'pl'].forEach((lang) => {
@@ -48,17 +59,19 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               entries: entries,
               lang,
+              categories, 
             }
           })
 
-          cats.forEach(cat => {
+          categories.forEach(cat => {
             createPage({
-              path: `/${lang}/${cat}`,
+              path: `/${lang}/${cat.node.name}`,
               component: categoryEntry,
               context: {
                 entries: entries,
-                category: cat,
+                category: cat.node.name,
                 lang,
+                categories
               }
             })
           });
@@ -75,6 +88,7 @@ exports.createPages = ({ graphql, actions }) => {
               story: entry.node,
               entries: array,
               lang: entry.node.full_slug.split('/')[0],
+              categories
             }
           })
         })

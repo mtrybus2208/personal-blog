@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import Home from '../components/Home';
+import Home from '../components/pages/Home';
 import { Link } from "gatsby";
-import Layout from "../components/layout"
+import Layout from "../components/layout/Layout"
 import { testExpr } from '../helpers/dataManipulation';
 
 const HomeEntry = ({ pageContext }) => {
   useEffect(() => {
-    console.log({HomeEntry: pageContext});
+    console.log({HomeEntry1: pageContext});
   });
   
   const filteredPosts = pageContext
@@ -16,7 +16,7 @@ const HomeEntry = ({ pageContext }) => {
     .filter(({ node }) => JSON.parse(node.content).component === 'post');
 
   return (
-    <Layout lang={pageContext.lang}>
+    <Layout lang={pageContext.lang} categories={pageContext.categories}>
       <Home
         posts={filteredPosts}
       />
