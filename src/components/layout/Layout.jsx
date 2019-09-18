@@ -5,7 +5,8 @@ import { StateContext } from '../../context/globalContext';
 import styled from 'styled-components';
  
 import Grid from './Grid';
-import Header from "../shared/Header"
+import Header from "../shared/Header";
+import Sidebar from "../shared/Sidebar";
 import "./layout.css"
 
 const Layout = ({ children, lang, categories }) => {
@@ -44,12 +45,15 @@ const Layout = ({ children, lang, categories }) => {
       {/*  */}
       <Grid>
         <Grid.SidebarArea>
-          <div>SIDEBAR</div>
-          {
+          <Sidebar
+            links={data.site.siteMetadata.menuLinks[lang]}
+            siteTitle={data.site.siteMetadata.title}
+          />
+          {/* {
             categories.map((cat, i) => (
               <p>{++i}.{cat.node.name}</p>
             ))
-          }
+          } */}
         </Grid.SidebarArea>
 
         <Grid.HeaderArea>
@@ -57,6 +61,7 @@ const Layout = ({ children, lang, categories }) => {
             siteTitle={data.site.siteMetadata.title}
             links={data.site.siteMetadata.menuLinks[lang]}
             lang={lang}
+            categories={categories}
           />
         </Grid.HeaderArea>
         <main>{children}</main>

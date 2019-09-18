@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react"
 import PropTypes from "prop-types"
 import styled from 'styled-components';
 
-const MenuButton = styled.span`
+const IconWrap = styled.span`
   color: ${({ color }) => color};
   font-size: ${({ size }) => size};
   font-family: 'Material Icons';
@@ -14,12 +14,12 @@ const Icon = ({
   color = '#fff',
 }) => {
   return (
-    <MenuButton
+    <IconWrap
       color={color}
       size={size}
     >
       {children}
-    </MenuButton>
+    </IconWrap>
   );
 }
 
