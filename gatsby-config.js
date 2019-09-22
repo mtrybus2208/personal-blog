@@ -67,12 +67,20 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-storyblok',
+      resolve: "gatsby-source-graphql",
       options: {
-        accessToken: 'MsR6FTXmrRHmv3J6Kofbpwtt',
-        homeSlug: 'home',
-        version: 'draft'
-      }
+        // This type will contain remote schema Query type
+        typeName: "STORYBLOK",
+        // This is the field under which it's accessible
+        fieldName: "storyblok",
+        // URL to query from
+        url: "https://gapi.storyblok.com/v1/api",
+        headers: {
+          // Learn about environment variables: https://gatsby.dev/env-vars
+          token: 'MsR6FTXmrRHmv3J6Kofbpwtt',
+          version: 'draft'
+        },
+      },
     },
     `gatsby-plugin-client-side-redirect`
     
@@ -81,3 +89,15 @@ module.exports = {
     // `gatsby-plugin-offline`,
   ],
 }
+/**
+ * 
+ * 
+    {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: 'MsR6FTXmrRHmv3J6Kofbpwtt',
+        homeSlug: 'home',
+        version: 'draft'
+      }
+    },
+ */

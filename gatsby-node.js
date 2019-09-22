@@ -33,42 +33,26 @@ exports.createPages = ({ graphql, actions }) => {
           categories: allStoryblokEntry(filter: {field_component: {eq: "category"}}) {
             edges {
               node {
-                id
                 name
-                created_at
-                published_at
-                uuid
-                slug
                 full_slug
-                content
-                is_startpage
-                parent_id
-                group_id
-                lang
+                slug
               }
             }
           }
 
-          myPages: allStoryblokEntry(filter: {field_component: {eq: "page"}}) {
+          page22g: allStoryblokEntry(filter: {field_component: {eq: "page"}}) {
             edges {
               node {
-                id
                 name
-                created_at
-                published_at
-                uuid
                 slug
                 full_slug
                 content
                 is_startpage
                 parent_id
-                group_id
-                lang
               }
             }
           }
-
-          posts: allStoryblokEntry(filter: {field_component: {eq: "post"}}) {
+          page22g: allStoryblokEntry(filter: {field_component: {eq: "page"}}) {
             edges {
               node {
                 name
@@ -90,9 +74,9 @@ exports.createPages = ({ graphql, actions }) => {
         
         const categories = result.data.categories.edges;
         const entries = result.data.pages.edges;
-        const posts = result.data.posts.edges;
-
-        
+        const cats = result.data.page22g.edges;
+        console.log('cats');
+        console.log(cats);
         ['en', 'pl'].forEach((lang) => {
           createPage({
             path: `/${lang}`,
