@@ -33,7 +33,7 @@ class StoryblokEntry extends React.Component {
     console.log({stejt: this.state});
     return (
       <Layout lang={lang}>
-        {React.createElement(Components(content.component), {key: content._uid, blok: content})}
+        {React.createElement(Components(content.component), {key: content._uid, blok: content, })}
       </Layout>
     )
   }

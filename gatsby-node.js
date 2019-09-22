@@ -4,9 +4,10 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const storyblokEntry = path.resolve('src/templates/storyblok-entry.js')
+    const storyblokEntry = path.resolve('src/templates/storyblok-entry.js');
     const categoryEntry = path.resolve('src/templates/category-entry.js');
     const homeEntry = path.resolve('src/templates/home-entry.js');
+
     resolve(
       graphql(
         `{
@@ -32,26 +33,66 @@ exports.createPages = ({ graphql, actions }) => {
           categories: allStoryblokEntry(filter: {field_component: {eq: "category"}}) {
             edges {
               node {
+                id
                 name
-                full_slug
+                created_at
+                published_at
+                uuid
                 slug
+                full_slug
+                content
+                is_startpage
+                parent_id
+                group_id
+                lang
               }
             }
-          } 
+          }
+
+          myPages: allStoryblokEntry(filter: {field_component: {eq: "page"}}) {
+            edges {
+              node {
+                id
+                name
+                created_at
+                published_at
+                uuid
+                slug
+                full_slug
+                content
+                is_startpage
+                parent_id
+                group_id
+                lang
+              }
+            }
+          }
+
+          posts: allStoryblokEntry(filter: {field_component: {eq: "post"}}) {
+            edges {
+              node {
+                name
+                slug
+                full_slug
+                content
+                is_startpage
+                parent_id
+              }
+            }
+          }
         }`
-      ).then(result => {
-        
-     
-        
+      )
+      .then(result => {
         if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
+          console.log(result.errors);
+          reject(result.errors);
         }
         
         const categories = result.data.categories.edges;
         const entries = result.data.pages.edges;
+        const posts = result.data.posts.edges;
 
-        const cats = ['js', 'react', 'angular', 'vue'];
+        
         ['en', 'pl'].forEach((lang) => {
           createPage({
             path: `/${lang}`,
@@ -77,8 +118,7 @@ exports.createPages = ({ graphql, actions }) => {
           });
         })
  
-        entries.forEach((entry, index, array) => {
-          console.log(entry.node.full_slug);
+        entries.forEach((entry, index, array) => { 
           let pagePath = entry.node.full_slug == 'home' ? '' : `${entry.node.full_slug}/`
           console.log(pagePath);
           createPage({
@@ -96,3 +136,24 @@ exports.createPages = ({ graphql, actions }) => {
     )
   })
 }
+/**
+ * gotowe gewry to pobierania wszystkich postow np z vue
+ * 
+{
+  PostItems(filter_query:{
+   	 	category: {
+        in: "b58ee670-368f-477d-95b6-0cc380aa2b5d"
+      }
+  }) {
+    total
+    items {
+      content {
+        title
+        category
+      }
+    }
+  }
+}
+ * 
+ * 
+ */
