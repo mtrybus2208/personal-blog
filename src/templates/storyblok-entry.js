@@ -1,42 +1,26 @@
-import React from 'react'
-import Components from '../components/layout/Components'
+import React, {useEffect} from 'react';
 import Layout from "../components/layout/Layout";
+import Category from '../components/pages/Category';
+import Page from '../components/pages/Page';
 
-class StoryblokEntry extends React.Component {
-  static getDerivedStateFromProps(props, state) {
- 
-    if (state.story.uuid === props.pageContext.story.uuid) {
-      return null
-    }
-
-    return StoryblokEntry.prepareStory(props)
-  }
-
-  static prepareStory(props) {
-    console.log({entryy: props.pageContext});
-    const story = Object.assign({}, props.pageContext.story)
-    story.content = JSON.parse(story.content)
-    story.lang = props.pageContext.lang
-    
-    return { story }
-  }
-
-  constructor(props) {
-    super(props)
- 
-    this.state = StoryblokEntry.prepareStory(props)
-  }
-
-  render() {
-    const content = this.state.story.content;
-    const lang = this.state.story.lang;
-    console.log({stejt: this.state});
-    return (
-      <Layout lang={lang}>
-        {React.createElement(Components(content.component), {key: content._uid, blok: content, })}
-      </Layout>
-    )
-  }
+const PAGE_COMPONENTS = {
+  page: Page,
+  category: Category,
 }
+
+const StoryblokEntry = ({ pageContext }) => {
+  if (!pageContext) { return null; }
+
+  const SpecificComponent = PAGE_COMPONENTS[pageContext.story.content.component];
+  return (
+    <Layout
+      lang={pageContext.lang}
+      categories={pageContext.categories}
+      pages={pageContext.pages}
+    >
+      <SpecificComponent {...pageContext} />;
+    </Layout>
+  )
+};
 
 export default StoryblokEntry

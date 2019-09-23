@@ -4,13 +4,13 @@ import SbEditable from 'storyblok-react';
 import config from '../../gatsby-config';
 
 const loadStoryblokBridge = function(cb) {
-  let sbConfigs = config.plugins.filter((item) => {
-    return item.resolve === 'gatsby-source-storyblok'
-  })
-  let sbConfig = sbConfigs.length > 0 ? sbConfigs[0] : {}
+  // let sbConfigs = config.plugins.filter((item) => {
+  //   return item.resolve === 'gatsby-source-storyblok'
+  // })
+  // let sbConfig = sbConfigs.length > 0 ? sbConfigs[0] : {}
   let script = document.createElement('script')
   script.type = 'text/javascript'
-  script.src = `//app.storyblok.com/f/storyblok-latest.js?t=${sbConfig.options.accessToken}`
+  script.src = `//app.storyblok.com/f/storyblok-latest.js?t=MsR6FTXmrRHmv3J6Kofbpwtt`
   script.onload = cb
   document.getElementsByTagName('head')[0].appendChild(script)
 }

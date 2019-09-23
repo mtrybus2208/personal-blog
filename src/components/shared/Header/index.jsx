@@ -23,8 +23,8 @@ const Header = ({ siteTitle, links, lang, categories }) => {
       <S.MenuItem>
         <Link  
           key={i}
-          to={`${lang}/${cat.node.name}`}
-        >{cat.node.name}
+          to={`${lang}/${cat.name}`}
+        >{cat.name}
         </Link>
       </S.MenuItem>
   ));

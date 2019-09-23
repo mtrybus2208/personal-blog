@@ -9,12 +9,13 @@ const CategoryEntry = ({pageContext}) => {
   });
   // przefiltruj
   return (
-    <Layout lang={pageContext.lang} categories={pageContext.categories}>
-      <Category
-        posts={pageContext.entries}
-        category={pageContext.category}
-      />
-    </Layout>
+    <h1>CATEGORY</h1>
+    // <Layout lang={pageContext.lang} categories={pageContext.categories}>
+    //   <Category
+    //     posts={pageContext.entries}
+    //     category={pageContext.category}
+    //   />
+    // </Layout>
   );
 }
 

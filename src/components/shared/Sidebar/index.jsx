@@ -6,18 +6,19 @@ import { StateContext } from '../../../context/globalContext';
 import Icon from '../Icon';
 import * as S from './styles';
 
-const Sidebar = ({ siteTitle, links}) => {
+const Sidebar = ({ siteTitle, links, lang}) => {
   const {
     menuOpen,
     toggleMenu,
   } = useContext(StateContext);
 
   const menuLinks = links.map((item, i) => {
+    console.log(item);
     return (
       <S.MenuItem>
         <Link 
           key={i}
-          to={item.link}
+          to={`${lang}/${item.slug}`}
         >
           <S.IconBox>
             <Icon
@@ -27,7 +28,7 @@ const Sidebar = ({ siteTitle, links}) => {
               bubble_chart
             </Icon>
           </S.IconBox>
-          <S.LinkCopy>{item.name}</S.LinkCopy>
+          <S.LinkCopy>{item.content.title}</S.LinkCopy>
         </Link>
       </S.MenuItem>
     );

@@ -17,35 +17,35 @@ export const Container = styled.div`
 
 const Category = ({
   posts,
-  category,
+  story,
+  lang,
 }) => {
   useEffect(() => {
     console.log({posts});
-    console.log({category});
+    console.log({story});
   });
  
   const filteredPosts = posts
-  .filter(({ node }) => 
-    testExpr(`\/${category}\/`, node.full_slug))
-  .map(({ node }, i) => {
-    const { id, full_slug, name } = node;
+  .map((post, i) => {
+    console.log(post);
+    const { slug, content } = post;
     return (
       <Link
-        key={id}
-        to={`/${full_slug}`}
+        key={content.uuid}
+        to={`${lang}/${slug}`}
         style={{
-          color: `#222`,
+          color: `inherit`,
           textDecoration: `none`,
         }}
       >
-      {++i}. {name}
+      {++i}. {content.title}
       </Link>  
-    );
+    )
   });
  
  return (
   <Container>
-    <h1>Kategoria: {category}</h1>
+    <h1>Kategoria: {story.name}</h1>
     {filteredPosts}
   </Container>
 )
