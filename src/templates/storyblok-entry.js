@@ -1,26 +1,34 @@
-import React, {useEffect} from 'react';
-import Layout from "../components/layout/Layout";
-import Category from '../components/pages/Category';
-import Page from '../components/pages/Page';
-
-const PAGE_COMPONENTS = {
-  page: Page,
-  category: Category,
-}
+import React, {useEffect, useState} from 'react';
+import Layout from '../components/layout/Layout';
+import Components from '../components/layout/Components';
 
 const StoryblokEntry = ({ pageContext }) => {
   if (!pageContext) { return null; }
 
-  const SpecificComponent = PAGE_COMPONENTS[pageContext.story.content.component];
+  const key = pageContext.story && pageContext.story.content.component || 'home';
+  const SpecificComponent = Components(key);
+  const {
+    lang,
+    categories,
+    pages,
+    story,
+    posts
+  } = pageContext;
+  
   return (
     <Layout
-      lang={pageContext.lang}
-      categories={pageContext.categories}
-      pages={pageContext.pages}
+      lang={lang}
+      categories={categories}
+      pages={pages}
     >
-      <SpecificComponent {...pageContext} />;
+      <SpecificComponent 
+        key={story.content._uid}
+        blok={story.content}
+        posts={posts}
+        lang={lang}
+      /> 
     </Layout>
   )
 };
 
-export default StoryblokEntry
+export default StoryblokEntry;

@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 const About = ({ blok }) => {
   useEffect(() => {
-    console.log({postProps: blok})
+
   });
  return (
   <Container>

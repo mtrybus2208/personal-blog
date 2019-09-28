@@ -15,30 +15,32 @@ export const Container = styled.div`
   margin: 10px auto;
 `;
 
-const Home = ({ posts }) => {
+const Home = ({ posts, lang }) => {
   useEffect(() => {
-    console.log({HOMECOMPONENT: posts});
+
   });
 
-  const computedPosts = posts.map(({ node }, i) => {
-    const { id, full_slug, name } = node;
+  const computedPosts = posts
+  .map((post, i) => {
+  
+    const { slug, content } = post;
     return (
       <Link
-        key={id}
-        to={`/${full_slug}`}
+        key={content.uuid}
+        to={`${lang}/${slug}`}
         style={{
-          color: `#222`,
+          color: `inherit`,
           textDecoration: `none`,
         }}
       >
-      {++i}. {name}
+      {++i}. {content.title}
       </Link>  
-    );
-  })
+    )
+  });
  
  return (
   <Container>
-    <h1>Kategoria: HOME witaj na moim blogu</h1>
+    <h1>HOME witaj na moim blogu</h1>
     {computedPosts};
   </Container>
 )

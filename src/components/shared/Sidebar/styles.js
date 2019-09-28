@@ -11,6 +11,9 @@ export const Sidebar = styled.div`
     height: 100%;
     border-right: 1px solid #2F363D;
     max-height: 100vh;
+    position: fixed;
+    left: 0;
+    width: 300px;
 `;
 
 export const TitleBox = styled.div`
@@ -34,6 +37,7 @@ export const MenuBox = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   padding: 50px 0;
+  padding-top: 0;
 `;
 
 export const Menu = styled.ul`
@@ -60,7 +64,7 @@ export const MenuItem = styled.li`
   a {
     color: inherit;
     text-transform: capitalize;
-    padding: 20px 25px;
+    padding: 15px 25px;
     display: flex;
     flex: 1;
 
@@ -69,13 +73,13 @@ export const MenuItem = styled.li`
       background: #212529;
     }
   }
+
+  &:last-child {
+    border-bottom: 1px solid #2F363D;
+  }
 `;
 
 export const Footer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid #2F363D;
 `;
 
 export const IconBox = styled.div`
@@ -84,21 +88,29 @@ export const IconBox = styled.div`
 
 export const LinkCopy = styled.div`
   padding-left: 15px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
 `;
 
 export const FooterItem = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
   flex: 1 1 auto;
-  border: ${({ border }) => {
-    if(border) {
-      return '1px solid #2F363D';
+  a {
+      display: flex;
+      flex: 1 1 auto;
+      padding: 5px;
+      justify-content: center;
+      align-items: center;
+      font-size: ${({fontSize}) => fontSize || 14}px;
+      color: inherit;
+      cursor: pointer;  
+      
+      &:hover {
+        text-decoration: none;
+        background: #212529;
+      }
     }
-    return 'none';
-  }};
-  border-top: none;
-  border-bottom: none;
 `;
  

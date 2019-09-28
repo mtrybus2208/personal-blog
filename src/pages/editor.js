@@ -1,13 +1,11 @@
 import React from 'react'
 import Components from '../components/layout/Components';
 import SbEditable from 'storyblok-react';
-import config from '../../gatsby-config';
+import config from '../../gatsby-config'; 
+import { StaticQuery, graphql } from "gatsby"
+import Layout from "../components/layout/Layout";
 
 const loadStoryblokBridge = function(cb) {
-  // let sbConfigs = config.plugins.filter((item) => {
-  //   return item.resolve === 'gatsby-source-storyblok'
-  // })
-  // let sbConfig = sbConfigs.length > 0 ? sbConfigs[0] : {}
   let script = document.createElement('script')
   script.type = 'text/javascript'
   script.src = `//app.storyblok.com/f/storyblok-latest.js?t=MsR6FTXmrRHmv3J6Kofbpwtt`
@@ -78,15 +76,88 @@ class StoryblokEntry extends React.Component {
     if (this.state.story == null) {
       return (<div></div>)
     }
-
-    let content = this.state.story.content
+    
+    const { content, full_slug } = this.state.story;
 
     return (
-      <SbEditable content={content}>
-      <div>
-        {React.createElement(Components(content.component), {key: content._uid, blok: content})}
-      </div>
-      </SbEditable>
+        <StaticQuery
+          query={graphql`
+          {
+            storyblok {
+              categories: CategoryItems {
+                total
+                items {
+                  name
+                  content {
+                    title
+                    component
+                    img
+                  }
+                  id
+                  group_id
+                  uuid
+                  full_slug
+                  slug
+                }
+              }
+  
+              pages: PageItems {
+                total
+                items {
+                  content {
+                    title
+                    content
+                    component
+                    _uid
+                  }
+                  full_slug
+                  id
+                  meta_data
+                  slug
+                  uuid
+                }
+              }
+  
+              posts:  PostItems {
+                total
+                items {
+                  full_slug
+                  slug
+                  name
+                  published_at
+                  content {
+                    title
+                    thumbnail
+                    summary
+                    lang
+                    date
+                    content
+                    component
+                    category
+                    _uid
+                  }
+                }
+              }
+            }
+          }
+          `}
+          render={data =>   {
+            return (
+              <SbEditable content={content}>
+                <Layout
+                  lang={full_slug.split('/')[0]}
+                  categories={data.storyblok.categories.items}
+                  pages={data.storyblok.pages.items}
+                >
+                {React.createElement(Components(content.component), {
+                  key: content._uid,
+                  blok: content
+                })}
+              </Layout>
+              </SbEditable>
+            )
+          } }
+        />
     )
   }
 }

@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'gatsby';
-import { testExpr } from '../../helpers/dataManipulation';
-
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -17,17 +15,11 @@ export const Container = styled.div`
 
 const Category = ({
   posts,
-  story,
   lang,
+  blok,
 }) => {
-  useEffect(() => {
-    console.log({posts});
-    console.log({story});
-  });
- 
-  const filteredPosts = posts
+  const filteredPosts = posts && posts
   .map((post, i) => {
-    console.log(post);
     const { slug, content } = post;
     return (
       <Link
@@ -45,7 +37,7 @@ const Category = ({
  
  return (
   <Container>
-    <h1>Kategoria: {story.name}</h1>
+    <h1>Kategoria: {blok.title}</h1>
     {filteredPosts}
   </Container>
 )

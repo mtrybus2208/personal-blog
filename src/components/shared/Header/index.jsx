@@ -13,13 +13,13 @@ const MenuButton = styled.span`
   }
 `;
  
-const Header = ({ siteTitle, links, lang, categories }) => {
+const Header = ({ lang, categories }) => {
   const {
     menuOpen,
     toggleMenu,
   } = useContext(StateContext);
 
-  const menuList = categories.map((cat, i) => (
+  const menuList = categories && categories.map((cat, i) => (
       <S.MenuItem>
         <Link  
           key={i}

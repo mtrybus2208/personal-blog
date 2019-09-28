@@ -1,8 +1,9 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useContext } from "react"
- 
 import { StateContext } from '../../../context/globalContext';
+import FluidPanel from '../../shared/FluidPanel';
+import LangItem from '../../shared/LangItem';
 import Icon from '../Icon';
 import * as S from './styles';
 
@@ -12,8 +13,7 @@ const Sidebar = ({ siteTitle, links, lang}) => {
     toggleMenu,
   } = useContext(StateContext);
 
-  const menuLinks = links.map((item, i) => {
-    console.log(item);
+  const menuLinks = links && links.map((item, i) => {
     return (
       <S.MenuItem>
         <Link 
@@ -32,13 +32,41 @@ const Sidebar = ({ siteTitle, links, lang}) => {
         </Link>
       </S.MenuItem>
     );
-  })
+  });
+
+  const langItems = ['pl', 'en'].map(lang => (
+    <LangItem
+      lang={lang}
+    />
+  ));
+
+  const socialItems = ['cake', 'print', 'school'].map((name, i) => (
+    <S.FooterItem>
+      <Link
+        key={i}
+        to={`#`}
+      >
+      <Icon
+        color="#4a5158"
+        size="25px"
+      >
+        {name}
+      </Icon>
+      </Link>
+    </S.FooterItem>
+  ));
 
   return (
     <S.Sidebar>
       <S.TitleBox>
         <S.Title>{siteTitle}</S.Title>
       </S.TitleBox>
+      <FluidPanel
+        items={langItems}
+        border={{
+          bottom: true,
+        }}
+      />
       <S.MenuBox>
         <S.Menu>
         {menuLinks}
@@ -46,32 +74,12 @@ const Sidebar = ({ siteTitle, links, lang}) => {
          
       </S.MenuBox>
       <S.Footer>
-        <S.FooterItem>
-          <Icon
-            color="#4a5158"
-            size="25px"
-          >
-            cake
-          </Icon>
-        </S.FooterItem>
-        <S.FooterItem
-          border
-        >
-          <Icon
-            color="#4a5158"
-            size="25px"
-          >
-            print
-          </Icon>
-        </S.FooterItem>
-        <S.FooterItem>
-          <Icon
-            color="#4a5158"
-            size="25px"
-          >
-            school
-          </Icon>
-        </S.FooterItem>
+        <FluidPanel
+          items={socialItems}
+          border={{
+            top: true,
+          }}
+        />
       </S.Footer>
     </S.Sidebar>
   );

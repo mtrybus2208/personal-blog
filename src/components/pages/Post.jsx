@@ -13,13 +13,16 @@ export const Container = styled.div`
   margin: 10px auto;
 `;
 
-const Post = ({ blok }) => {
+const Post = ({ story, lang, blok }) => {
   useEffect(() => {
-    console.log({postProps: blok})
+
   });
+  if(!blok.content) {
+    return null
+  }
  return (
   <Container>
-     <h1>Hellop from single post!</h1>
+     <h1>{blok.content.title}</h1>
      <ReactMarkdown source={blok.content} />
   </Container>
 )

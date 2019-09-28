@@ -16,8 +16,8 @@ const Layout = ({
   pages,
 }) => {
   useEffect(() => {
-    console.log({categories})
   });
+
  
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -40,17 +40,18 @@ const Layout = ({
       }
     }
   `) 
+
   return (
     <>
       <Grid>
-         <Grid.SidebarArea>  
+         <Grid.SidebarArea>
           <Sidebar
             lang={lang}
-            links={pages.filter(page => testExpr(`${lang}\/`, page.full_slug))}
+            links={pages && pages.filter(page => testExpr(`${lang}\/`, page.full_slug))}
             siteTitle={data.site.siteMetadata.title}
           />  
         </Grid.SidebarArea>
-
+ 
         <Grid.HeaderArea>
           <Header
             siteTitle={data.site.siteMetadata.title}

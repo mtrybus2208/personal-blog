@@ -5,6 +5,7 @@ const testExpr = (expr, str) => {
   return reg.test(str);
 };
 
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -100,6 +101,21 @@ exports.createPages = ({ graphql, actions }) => {
             })   
           });
         });
+        
+        posts.forEach(cat => {
+          ['en', 'pl'].forEach(lang => {
+            createPage({
+              path: `/${lang}/${cat.slug}`,
+              component: storyblokEntry,
+              context: {
+                lang,
+                story: cat, 
+                categories,
+                pages,
+              }
+            })   
+          });
+        });
 
         pages.forEach(page => {
           ['en', 'pl'].forEach(lang => {
@@ -115,6 +131,27 @@ exports.createPages = ({ graphql, actions }) => {
             })   
           });
         });
+
+        ['en', 'pl'].forEach(lang => {
+          createPage({
+            path: `/${lang}/`,
+            component: storyblokEntry,
+            context: {
+              lang,
+              posts: posts
+                .filter(post => testExpr(`${lang}\/`, post.full_slug)),
+              categories,
+              pages,
+              story: {
+                content: {
+                  component: 'home',
+
+                }
+              }
+            }
+          })   
+        });
+
       })
     )
   })

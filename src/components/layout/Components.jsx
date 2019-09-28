@@ -1,13 +1,14 @@
 import Page from '../pages/Page';
 import Post from '../pages/Post';
-import Portfolio from '../pages/Portfolio';
-import About from '../pages/About'; 
+import Home from '../pages/Home';
+import Category from '../pages/Category';
 import ComponentNotFound from '../shared/component_not_found';
 
 const ComponentList = {
   page: Page,
+  category: Category,
+  home: Home,
   post: Post,
-  about: About, 
 }
 
 const Components = (type) => {

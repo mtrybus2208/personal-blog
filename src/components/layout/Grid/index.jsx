@@ -19,7 +19,6 @@ const Grid = styled.div`
       "sidebar content"
       "sidebar content";
     margin-left: 0;
-    overflow: hidden;
   }
 
   @media (min-width: 1024px) {
