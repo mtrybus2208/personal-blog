@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 export const LangItem = styled.div`
     display: flex;
     flex: 1 1 auto;
-
     a {
       display: flex;
       flex: 1 1 auto;
@@ -17,7 +16,7 @@ export const LangItem = styled.div`
       
       &:hover {
         text-decoration: none;
-        background: #212529;
+        background: ${props => props.theme.background.action};
       }
     }
 `;

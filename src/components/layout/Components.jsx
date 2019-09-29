@@ -12,7 +12,6 @@ const ComponentList = {
 }
 
 const Components = (type) => {
-  console.log({type});
   if (typeof ComponentList[type] === 'undefined') {
     return ComponentNotFound
   }

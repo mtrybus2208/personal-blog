@@ -198,20 +198,7 @@ html {
 *:after {
   box-sizing: inherit;
 }
-body {
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
-  font-weight: normal;
-  word-wrap: break-word;
-  font-kerning: normal;
-  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-  font-feature-settings: "kern", "liga", "clig", "calt";
-  color: #dcd8d8;
-  font-family: roboto;
-  background: #1B1F23;
-}
+
 img {
   max-width: 100%;
   margin-left: 0;
@@ -223,6 +210,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
+
 h1 {
   margin-left: 0;
   margin-right: 0;
@@ -624,6 +612,4 @@ pre tt:after {
   }
 }
 
-.material-icons {
-  font-family: 'Material Icons';
-}
+ 

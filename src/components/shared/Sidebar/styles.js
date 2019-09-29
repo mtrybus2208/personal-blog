@@ -2,30 +2,35 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 export const Sidebar = styled.div`
-    background: #1B1F23;
-    color: #c3c1c1;
-    font-family: roboto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    border-right: 1px solid #2F363D;
-    max-height: 100vh;
-    position: fixed;
-    left: 0;
-    width: 300px;
+background-color: ${props => props.theme.background.base};
+  color: ${props => props.theme.color};
+  font-family: roboto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border-right: 1px solid ${props => props.theme.borderColor.base};
+  max-height: 100vh;
+  position: fixed;
+  left: 0;
+  width: 300px;
 `;
 
 export const TitleBox = styled.div`
-  padding: 25px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #2F363D;
+  border-bottom: 1px solid ${props => props.theme.borderColor.base};
+  padding: 5px;
+  min-height: 60px;
+  align-items: center;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 `;
 
 export const Title = styled.h1`
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 400;
   margin: 0;
   padding: 0;
@@ -70,12 +75,12 @@ export const MenuItem = styled.li`
 
     &:hover {
       text-decoration: none;
-      background: #212529;
+      background: ${props => props.theme.background.action};
     }
   }
 
   &:last-child {
-    border-bottom: 1px solid #2F363D;
+    border-bottom: 1px solid ${props => props.theme.borderColor.base};
   }
 `;
 
@@ -109,7 +114,7 @@ export const FooterItem = styled.div`
       
       &:hover {
         text-decoration: none;
-        background: #212529;
+        background: ${props => props.theme.background.action};
       }
     }
 `;

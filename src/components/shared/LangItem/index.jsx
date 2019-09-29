@@ -13,7 +13,6 @@ const defaultProps = { };
 const LangItem = ({
   lang,
 }) => {
-
   return (
     lang && (
       <S.LangItem>

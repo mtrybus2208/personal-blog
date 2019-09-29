@@ -16,31 +16,28 @@ export const Container = styled.div`
 `;
 
 const Home = ({ posts, lang }) => {
-  useEffect(() => {
-
-  });
 
   const computedPosts = posts
-  .map((post, i) => {
-  
-    const { slug, content } = post;
-    return (
-      <Link
-        key={content.uuid}
-        to={`${lang}/${slug}`}
-        style={{
-          color: `inherit`,
-          textDecoration: `none`,
-        }}
-      >
-      {++i}. {content.title}
-      </Link>  
-    )
-  });
+    .map((post, i) => {
+    
+      const { slug, content } = post;
+      return (
+        <Link
+          key={content.uuid}
+          to={`${lang}/${slug}`}
+          style={{
+            color: `inherit`,
+            textDecoration: `none`,
+          }}
+        >
+        {++i}. {content.title}
+        </Link>  
+      )
+    });
  
  return (
   <Container>
-    <h1>HOME witaj na moim blogu</h1>
+    <h1>Home page</h1>
     {computedPosts};
   </Container>
 )

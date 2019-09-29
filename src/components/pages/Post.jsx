@@ -14,17 +14,14 @@ export const Container = styled.div`
 `;
 
 const Post = ({ story, lang, blok }) => {
-  useEffect(() => {
-
-  });
   if(!blok.content) {
     return null
   }
- return (
-  <Container>
-     <h1>{blok.content.title}</h1>
-     <ReactMarkdown source={blok.content} />
-  </Container>
-)
+  return (
+    <Container>
+        <h1>{blok.content.title}</h1>
+        <ReactMarkdown source={blok.content} />
+    </Container>
+  )
 }
 export default Post;

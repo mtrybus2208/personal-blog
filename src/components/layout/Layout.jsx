@@ -2,8 +2,10 @@ import React, { useEffect, useContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { StateContext } from '../../context/globalContext';
-import styled from 'styled-components';
 import { testExpr } from '../../helpers/dataManipulation';
+import { ThemeContext } from 'styled-components';
+import GlobalStyles from '../../context/globalStyles';
+ 
 import Grid from './Grid';
 import Header from "../shared/Header";
 import Sidebar from "../shared/Sidebar";
@@ -14,26 +16,14 @@ const Layout = ({
   lang,
   categories,
   pages,
-}) => {
-  useEffect(() => {
-  });
-
+}) => { 
+  const themeContext = useContext(ThemeContext); 
  
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
           author
-          menuLinks {
-            en {
-              name
-              link
-            }
-            pl {
-              link
-              name
-            }
-          }
           description
           title
         }
@@ -43,6 +33,7 @@ const Layout = ({
 
   return (
     <>
+      <GlobalStyles theme={themeContext} />
       <Grid>
          <Grid.SidebarArea>
           <Sidebar
@@ -55,7 +46,6 @@ const Layout = ({
         <Grid.HeaderArea>
           <Header
             siteTitle={data.site.siteMetadata.title}
-            links={data.site.siteMetadata.menuLinks[lang]}
             lang={lang}
             categories={categories}
           />

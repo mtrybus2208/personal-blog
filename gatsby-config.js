@@ -1,41 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `MTDev blog`,
-    menuLinks: {
-      pl: [
-        {
-          name: 'blog',
-          link: '/pl'
-        },
-        {
-          name: 'portfolio',
-          link: '/pl/portfolio'
-        },
-        {
-          name: 'o mnie',
-          link: '/pl/about'
-        },
-      ],
-      en: [
-        {
-          name: 'blog',
-          link: '/en'
-        },
-        {
-          name: 'portfolio',
-          link: '/en/portfolio'
-        },
-        {
-          name: 'about me',
-          link: '/en/about'
-        },     
-      ]
-    },
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `michal trybus`,
+    description: `...`,
     author: `Michal Trybus`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-styled-components-dark-mode`,
+      options: {
+        light: require(`${__dirname}/src/context/theme.js`).lightTheme,
+        dark: require(`${__dirname}/src/context/theme.js`).darkTheme,
+      },
+    },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
@@ -89,21 +66,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-client-side-redirect`
-    
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
-/**
- * 
- * 
-    {
-      resolve: 'gatsby-source-storyblok',
-      options: {
-        accessToken: 'MsR6FTXmrRHmv3J6Kofbpwtt',
-        homeSlug: 'home',
-        version: 'draft'
-      }
-    },
- */

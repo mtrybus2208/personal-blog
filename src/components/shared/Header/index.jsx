@@ -2,22 +2,17 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useContext } from "react"
 import Icon from '../Icon';
+import { ThemeManagerContext } from "gatsby-styled-components-dark-mode"
 import { StateContext } from '../../../context/globalContext';
-import styled from 'styled-components';
 import * as S from './styles';
 
-const MenuButton = styled.span`
-  cursor: pointer;
-  &:hover {
-    opacity: .5;
-  }
-`;
- 
 const Header = ({ lang, categories }) => {
   const {
     menuOpen,
     toggleMenu,
+    toggleTheme
   } = useContext(StateContext);
+  const themeContext = useContext(ThemeManagerContext)
 
   const menuList = categories && categories.map((cat, i) => (
       <S.MenuItem>
@@ -31,7 +26,25 @@ const Header = ({ lang, categories }) => {
 
   return (
     <S.Header>
-      {menuList}
+      <S.HeaderCol>
+        {menuList}
+      </S.HeaderCol>
+
+      <S.HeaderCol>
+        <S.ThemeItem
+          onClick={() => themeContext.toggleDark()}
+        >
+          <Icon
+            color="#c3c1c1"
+            size="20px"
+          >
+            {themeContext.isDark
+              ? 'wb_sunny'
+              : 'nights_stay'
+            }
+          </Icon>   
+        </S.ThemeItem>
+      </S.HeaderCol>
     </S.Header>
   )
 }

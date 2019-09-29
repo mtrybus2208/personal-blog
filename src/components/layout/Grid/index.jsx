@@ -7,13 +7,13 @@ const Grid = styled.div`
   grid-template-columns: 100vw 1fr;
   grid-template-rows: 60px 1fr;
   grid-template-areas: "header header" "sidebar content" "sidebar content";
-  background: #1B1F23;
+  background: ${props => props.theme.background.base};
   margin-left: -100vw;
   position: relative;
 
   @media (min-width: 768px) {
     grid-template-columns: 250px 1fr;
-    grid-template-rows: 80px 1fr;
+    grid-template-rows: 60px 1fr;
     grid-template-areas:
       "sidebar header"
       "sidebar content"
@@ -32,7 +32,7 @@ Grid.SidebarArea = styled.div`
   position: relative;
   left: '100vw';
   z-index: 10;
-  background: #1B1F23;
+  background: ${props => props.theme.background.base};
 
   @media (min-width: 768px) {     
     left: 0;
