@@ -20,14 +20,25 @@
     "gatsby-source-storyblok": "^0.2.4",
     "gatsby-styled-components-dark-mode": "^1.0.7",
     "gatsby-transformer-sharp": "^2.2.13",
+    "htmr": "^0.8.6",
+    "kramed": "^0.5.6",
+    "markdown-to-ast": "^6.0.3",
+    "markdown-to-jsx": "^6.10.3",
     "prop-types": "^15.7.2",
     "rambda": "^3.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-markdown": "^4.2.2",
+    "rehype-raw": "^4.0.1",
+    "rehype-react": "^4.0.1",
+    "rehype-stringify": "^6.0.0",
+    "remark-parse": "^7.0.1",
+    "remark-rehype": "^5.0.0",
+    "remark-slug": "^5.1.2",
     "storyblok-react": "^0.0.9",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "unified": "^8.4.0"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
