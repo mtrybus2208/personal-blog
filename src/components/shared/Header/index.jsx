@@ -1,33 +1,40 @@
-import { Link } from "gatsby"
+import { Link } from "gatsby";
 import PropTypes from "prop-types"
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import Icon from '../Icon';
 import { ThemeManagerContext } from "gatsby-styled-components-dark-mode"
 import { StateContext } from '../../../context/globalContext';
+import MenuList from '../MenuList';
 import * as S from './styles';
 
-const Header = ({ lang, categories }) => {
+const propTypes = {
+  lang: PropTypes.string,
+  categories: PropTypes.array,
+};
+
+const defaultProps = {
+  lang: '',
+  categories: '',
+};
+
+const Header = ({
+  lang,
+  categories,
+}) => {
   const {
     menuOpen,
     toggleMenu,
     toggleTheme
   } = useContext(StateContext);
-  const themeContext = useContext(ThemeManagerContext)
-
-  const menuList = categories && categories.map((cat, i) => (
-      <S.MenuItem>
-        <Link  
-          key={i}
-          to={`${lang}/${cat.name}`}
-        >{cat.name}
-        </Link>
-      </S.MenuItem>
-  ));
+  const themeContext = useContext(ThemeManagerContext);
 
   return (
     <S.Header>
-      <S.HeaderCol>
-        {menuList}
+      <S.HeaderCol> 
+        <MenuList
+          items={categories}
+          lang={lang}
+        />
       </S.HeaderCol>
 
       <S.HeaderCol>
@@ -49,12 +56,6 @@ const Header = ({ lang, categories }) => {
   )
 }
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
+export default Header;

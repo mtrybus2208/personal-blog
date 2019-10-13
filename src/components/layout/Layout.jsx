@@ -5,11 +5,9 @@ import { StateContext } from '../../context/globalContext';
 import { testExpr } from '../../helpers/dataManipulation';
 import { ThemeContext } from 'styled-components';
 import GlobalStyles from '../../context/globalStyles';
- 
 import Grid from './Grid';
 import Header from "../shared/Header";
 import Sidebar from "../shared/Sidebar";
-import "./layout.css"
 
 const Layout = ({
   children,
@@ -17,7 +15,8 @@ const Layout = ({
   categories,
   pages,
 }) => { 
-  const themeContext = useContext(ThemeContext); 
+  const themeContext = useContext(ThemeContext);
+  const { menuOpen } = useContext(StateContext);
  
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -34,7 +33,9 @@ const Layout = ({
   return (
     <>
       <GlobalStyles theme={themeContext} />
-      <Grid>
+      <Grid
+        menuOpen={menuOpen}
+      >
          <Grid.SidebarArea>
           <Sidebar
             lang={lang}
@@ -50,12 +51,10 @@ const Layout = ({
             categories={categories}
           />
         </Grid.HeaderArea>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Grid.ContentArea>
+          <main>{children}</main>
+        </Grid.ContentArea>
+
       </Grid>
     </>
   )

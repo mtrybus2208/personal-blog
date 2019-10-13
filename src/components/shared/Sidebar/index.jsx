@@ -4,6 +4,7 @@ import React, { useContext } from "react"
 import { StateContext } from '../../../context/globalContext';
 import FluidPanel from '../../shared/FluidPanel';
 import LangItem from '../../shared/LangItem';
+import TitleBox from './components/TitleBox';
 import Icon from '../Icon';
 import * as S from './styles';
 
@@ -58,9 +59,7 @@ const Sidebar = ({ siteTitle, links, lang}) => {
 
   return (
     <S.Sidebar>
-      <S.TitleBox>
-        <S.Title>{siteTitle}</S.Title>
-      </S.TitleBox>
+      <TitleBox />
       <FluidPanel
         items={langItems}
         border={{
@@ -94,3 +93,4 @@ Sidebar.defaultProps = {
 }
 
 export default Sidebar;
+

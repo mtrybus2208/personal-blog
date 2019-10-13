@@ -155,3 +155,24 @@ exports.createPages = ({ graphql, actions }) => {
     )
   })
 }
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    plugins: [
+      plugins.define({
+        "prismjs": {
+          "languages": ["javascript", "css", "html"],
+          "plugins": ["line-numbers", "show-language"],
+          "theme": "okaidia",
+          "css": true
+        }
+      }),
+    ],
+  })
+}

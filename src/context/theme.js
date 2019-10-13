@@ -11,12 +11,12 @@ const darkTheme = {
 
 const lightTheme = {
   background: {
-    base: '#fbf5e6',
-    action: '#f5e4bc',
+    base: '#ecf0f1',
+    action: '#d6dcdf',
   },
   color: '#5c6773',
   borderColor: {
-    base: '#d4bf89',
+    base: '#b8bcbd',
   }
 };
 
