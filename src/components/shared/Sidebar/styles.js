@@ -11,30 +11,36 @@ background-color: ${props => props.theme.background.base};
   height: 100%;
   border-right: 1px solid ${props => props.theme.borderColor.base};
   max-height: 100vh;
-  position: fixed;
+ position: absolute;
   left: 0;
-  width: 300px;
+ 
+
+  width: 100%;
+  position: static;
+  /*  */
+  position: absolute;
+    bottom: 0;
+    max-height: 100vh;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+  /* 
+  
+  
+  
+  
+  
+   */
+
+  @media (min-width: 768px) {     
+    width: 300px;
+    position: fixed;
+  }
+ 
 `;
 
-export const TitleBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid ${props => props.theme.borderColor.base};
-  padding: 5px;
-  min-height: 60px;
-  align-items: center;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-`;
-
-export const Title = styled.h1`
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
-  padding: 0;
-`;
 
 export const MenuBox = styled.div`
   display: flex;

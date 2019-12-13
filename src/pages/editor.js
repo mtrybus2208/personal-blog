@@ -1,27 +1,27 @@
-import React from 'react'
-import Components from '../components/layout/Components';
-import SbEditable from 'storyblok-react';
-import config from '../../gatsby-config'; 
+import React from "react"
+import Components from "../components/layout/Components"
+import SbEditable from "storyblok-react"
+import config from "../../gatsby-config"
 import { StaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout/Layout";
+import Layout from "../components/layout/Layout"
 
 const loadStoryblokBridge = function(cb) {
-  let script = document.createElement('script')
-  script.type = 'text/javascript'
+  let script = document.createElement("script")
+  script.type = "text/javascript"
   script.src = `//app.storyblok.com/f/storyblok-latest.js?t=MsR6FTXmrRHmv3J6Kofbpwtt`
   script.onload = cb
-  document.getElementsByTagName('head')[0].appendChild(script)
+  document.getElementsByTagName("head")[0].appendChild(script)
 }
 
 const getParam = function(val) {
-  var result = ''
+  var result = ""
   var tmp = []
 
   window.location.search
     .substr(1)
-    .split('&')
-    .forEach(function (item) {
-      tmp = item.split('=')
+    .split("&")
+    .forEach(function(item) {
+      tmp = item.split("=")
       if (tmp[0] === val) {
         result = decodeURIComponent(tmp[1])
       }
@@ -33,35 +33,43 @@ const getParam = function(val) {
 class StoryblokEntry extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {story: null}
+    this.state = { story: null }
   }
 
   componentDidMount() {
-    loadStoryblokBridge(() => { this.initStoryblokEvents() })
+    loadStoryblokBridge(() => {
+      this.initStoryblokEvents()
+    })
   }
 
   loadStory(payload) {
-    window.storyblok.get({
-      slug: getParam('path'),
-      version: 'draft'
-    }, (data) => {
-      this.setState({story: data.story})
-    })
+    window.storyblok.get(
+      {
+        slug: getParam("path"),
+        version: "draft",
+      },
+      data => {
+        this.setState({ story: data.story })
+      }
+    )
   }
 
   initStoryblokEvents() {
-    this.loadStory({storyId: getParam('path')})
+    this.loadStory({ storyId: getParam("path") })
 
     let sb = window.storyblok
 
-    sb.on(['change', 'published'], (payload) => {
+    sb.on(["change", "published"], payload => {
       this.loadStory(payload)
     })
 
-    sb.on('input', (payload) => {
+    sb.on("input", payload => {
       if (this.state.story && payload.story.id === this.state.story.id) {
-        payload.story.content = sb.addComments(payload.story.content, payload.story.id)
-        this.setState({story: payload.story})
+        payload.story.content = sb.addComments(
+          payload.story.content,
+          payload.story.id
+        )
+        this.setState({ story: payload.story })
       }
     })
 
@@ -74,14 +82,14 @@ class StoryblokEntry extends React.Component {
 
   render() {
     if (this.state.story == null) {
-      return (<div></div>)
+      return <div></div>
     }
-    
-    const { content, full_slug } = this.state.story;
+
+    const { content, full_slug } = this.state.story
 
     return (
-        <StaticQuery
-          query={graphql`
+      <StaticQuery
+        query={graphql`
           {
             storyblok {
               categories: CategoryItems {
@@ -100,7 +108,7 @@ class StoryblokEntry extends React.Component {
                   slug
                 }
               }
-  
+
               pages: PageItems {
                 total
                 items {
@@ -117,8 +125,8 @@ class StoryblokEntry extends React.Component {
                   uuid
                 }
               }
-  
-              posts:  PostItems {
+
+              posts: PostItems {
                 total
                 items {
                   full_slug
@@ -133,31 +141,38 @@ class StoryblokEntry extends React.Component {
                     date
                     content
                     component
-                    category
+                    category {
+                      id
+                      lang
+                      name
+                      metaData
+                      path
+                      createdAt
+                    }
                     _uid
                   }
                 }
               }
             }
           }
-          `}
-          render={data =>   {
-            return (
-              <SbEditable content={content}>
-                <Layout
-                  lang={full_slug.split('/')[0]}
-                  categories={data.storyblok.categories.items}
-                  pages={data.storyblok.pages.items}
-                >
+        `}
+        render={data => {
+          return (
+            <SbEditable content={content}>
+              <Layout
+                lang={full_slug.split("/")[0]}
+                categories={data.storyblok.categories.items}
+                pages={data.storyblok.pages.items}
+              >
                 {React.createElement(Components(content.component), {
                   key: content._uid,
-                  blok: content
+                  blok: content,
                 })}
               </Layout>
-              </SbEditable>
-            )
-          } }
-        />
+            </SbEditable>
+          )
+        }}
+      />
     )
   }
 }

@@ -1,13 +1,27 @@
 import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const GlobalStyles = createGlobalStyle`
+	${normalize}
+	
   html {
-    background:${props => props.theme.background.base};
+    &::-webkit-scrollbar-track { 
+      background-color: #181a1d;
+    }
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      background-color: #181a1d;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #111; 
+    } 
   }
-  
+
   body {
     font-family: roboto, sans-serif;
-    font-weight: normal;
+    font-weight: normal;  
     word-wrap: break-word;
     font-kerning: normal;
     -moz-font-feature-settings: "kern", "liga", "clig", "calt";
@@ -21,6 +35,9 @@ const GlobalStyles = createGlobalStyle`
   .material-icons {
     font-family: 'Material Icons';
   }
+
 `;
+
+ 
 
 export default GlobalStyles;

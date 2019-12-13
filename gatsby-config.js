@@ -7,6 +7,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: "gatsby-plugin-svgr-loader",
+      options: {
+        rule: {
+          include: /assets/ 
+        }
+      }  
+    },
+    {
       resolve: `gatsby-styled-components-dark-mode`,
       options: {
         light: require(`${__dirname}/src/context/theme.js`).lightTheme,
@@ -46,7 +54,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo-dark.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -65,6 +73,7 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-client-side-redirect`
+    `gatsby-plugin-client-side-redirect`,
+   
   ],
 }
