@@ -7,22 +7,22 @@ const Grid = styled.div`
   grid-template-columns: 50vw 50vw 100vw;
   grid-template-rows: 60px 1fr 1fr;
   grid-template-areas:
-    "header  header header"
-    "sidebar  menu content"
-    "sidebar  menu content";
+    'header  header header'
+    'sidebar  menu content'
+    'sidebar  menu content';
   background: ${props => props.theme.background.base};
   position: relative;
-  transition: margin .2s linear;
-  margin-left: ${({ menuOpen }) => menuOpen ? '-100%' : 0};
-  overflow: ${({ menuOpen }) => !menuOpen ? 'hidden' : 'unset'};
+  transition: margin 0.2s linear;
+  margin-left: ${({ menuOpen }) => (menuOpen ? '-100%' : 0)};
+  overflow: ${({ menuOpen }) => (!menuOpen ? 'hidden' : 'unset')};
 
   @media (min-width: 768px) {
     grid-template-columns: 250px 1fr;
     grid-template-rows: 60px 1fr;
     grid-template-areas:
-      "sidebar header"
-      "sidebar content"
-      "sidebar content";
+      'sidebar header'
+      'sidebar content'
+      'sidebar content';
     margin-left: 0;
     transition: none;
     overflow: unset;
@@ -35,24 +35,24 @@ const Grid = styled.div`
 
 Grid.SidebarArea = styled.div`
   transition: all linear 400ms;
- 
+
   grid-area: sidebar;
-  position: relative; 
+  position: relative;
   z-index: 10;
   background: ${props => props.theme.background.base};
 
-  @media (min-width: 768px) {     
+  @media (min-width: 768px) {
     left: 0;
     grid-area: sidebar;
   }
 `;
 
 Grid.HeaderArea = styled.div`
-  grid-area: menu; 
+  grid-area: menu;
   position: relative;
   @media (min-width: 768px) {
-      grid-area: header;
-      margin-left: 0;
+    grid-area: header;
+    margin-left: 0;
   }
 `;
 
@@ -63,7 +63,6 @@ Grid.ContentArea = styled.div`
     grid-area: content;
   }
 `;
- 
 
 export const Centered = styled.div`
   display: flex;
@@ -72,11 +71,7 @@ export const Centered = styled.div`
 `;
 
 export const CenteredWrapper = styled(Centered)`
-    height: 100%;
+  height: 100%;
 `;
 
 export default Grid;
-
-
-
- 
