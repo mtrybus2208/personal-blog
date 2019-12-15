@@ -9,8 +9,20 @@ export const Container = styled.div`
   padding: 15px;
   border: 10px solid ${({ theme }) => theme.background.action};
 
+  & > div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
   @media (min-width: 768px) {
     border: 30px solid ${({ theme }) => theme.background.action};
     padding: 70px;
+  }
+
+  @media (min-width: 1400px) {
+    & > div {
+      width: 80%;
+    }
   }
 `;

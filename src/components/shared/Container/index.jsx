@@ -8,16 +8,10 @@ const propTypes = {
 };
 
 const defaultProps = {};
- 
-const Container = ({
-  children,
-}) => {
-  return (
-    <S.Container>
-      {children}
-    </S.Container>
-  )
-}
+
+const Container = ({ children }) => {
+  return <S.Container>{children}</S.Container>;
+};
 
 Container.propTypes = propTypes;
 Container.defaultProps = defaultProps;
