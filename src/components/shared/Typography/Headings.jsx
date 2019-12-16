@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 export const H1 = styled.h1`
@@ -11,4 +11,10 @@ export const H1 = styled.h1`
 
 export const Par = styled.p`
   margin-bottom: 10px;
+  color: ${({ color }) => color};
+  ${({ noMargin }) =>
+    noMargin &&
+    css`
+      margin: 0;
+    `};
 `;
