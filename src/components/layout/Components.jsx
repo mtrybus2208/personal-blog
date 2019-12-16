@@ -9,13 +9,13 @@ const ComponentList = {
   category: Category,
   home: Home,
   post: Post,
-}
+};
 
-const Components = (type) => {
+const Components = type => {
   if (typeof ComponentList[type] === 'undefined') {
-    return ComponentNotFound
+    return ComponentNotFound;
   }
-  return ComponentList[type]
-}
+  return ComponentList[type];
+};
 
-export default Components
+export default Components;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 export const Sidebar = styled.div`
-background-color: ${props => props.theme.background.base};
+  background-color: ${props => props.theme.background.base};
   color: ${props => props.theme.color};
   font-family: roboto;
   display: flex;
@@ -11,36 +11,24 @@ background-color: ${props => props.theme.background.base};
   height: 100%;
   border-right: 1px solid ${props => props.theme.borderColor.base};
   max-height: 100vh;
- position: absolute;
+  position: absolute;
   left: 0;
- 
 
   width: 100%;
   position: static;
-  /*  */
   position: absolute;
-    bottom: 0;
-    max-height: 100vh;
-    top: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 50vw;
-  /* 
-  
-  
-  
-  
-  
-   */
-
-  @media (min-width: 768px) {     
+  bottom: 0;
+  max-height: 100vh;
+  top: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  @media (min-width: 768px) {
     width: 300px;
     position: fixed;
   }
- 
 `;
-
 
 export const MenuBox = styled.div`
   display: flex;
@@ -64,13 +52,13 @@ export const Menu = styled.ul`
 `;
 
 export const MenuItem = styled.li`
-    margin: 0;
-    padding: 0;
-    -webkit-text-decoration: none;
-    text-decoration: none;
-    flex: 1 1 100%;
-    width: 100%;
-    display: flex;
+  margin: 0;
+  padding: 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  flex: 1 1 100%;
+  width: 100%;
+  display: flex;
 
   a {
     color: inherit;
@@ -90,8 +78,7 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const Footer = styled.div`
-`;
+export const Footer = styled.div``;
 
 export const IconBox = styled.div`
   text-transform: none;
@@ -109,19 +96,18 @@ export const FooterItem = styled.div`
   display: flex;
   flex: 1 1 auto;
   a {
-      display: flex;
-      flex: 1 1 auto;
-      padding: 5px;
-      justify-content: center;
-      align-items: center;
-      font-size: ${({fontSize}) => fontSize || 14}px;
-      color: inherit;
-      cursor: pointer;  
-      
-      &:hover {
-        text-decoration: none;
-        background: ${props => props.theme.background.action};
-      }
+    display: flex;
+    flex: 1 1 auto;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: ${({ fontSize }) => fontSize || 14}px;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+      background: ${props => props.theme.background.action};
     }
+  }
 `;
- 
