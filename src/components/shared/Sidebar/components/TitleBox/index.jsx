@@ -12,7 +12,7 @@ const propTypes = {};
 
 const defaultProps = {};
 
-const TitleBox = ({}) => {
+const TitleBox = ({ show }) => {
   const { menuOpen, toggleMenu, toggleTheme } = useContext(StateContext);
 
   const themeContext = useContext(ThemeManagerContext);
@@ -37,19 +37,21 @@ const TitleBox = ({}) => {
   `);
 
   return (
-    <S.TitleBox menuOpen={menuOpen}>
-      <S.Title>mtrybus.com</S.Title>
-      {themeContext.isDark ? (
-        <Img fixed={data.logoDark.childImageSharp.fixed} />
-      ) : (
-        <Img fixed={data.logoLight.childImageSharp.fixed} />
-      )}
-      <S.MenuTrigger onClick={toggleMenu}>
-        <Icon color="#c3c1c1" size="18px">
-          menu
-        </Icon>
-      </S.MenuTrigger>
-    </S.TitleBox>
+    show && (
+      <S.TitleBox menuOpen={menuOpen}>
+        <S.Title>mtrybus.com</S.Title>
+        {themeContext.isDark ? (
+          <Img fixed={data.logoDark.childImageSharp.fixed} />
+        ) : (
+          <Img fixed={data.logoLight.childImageSharp.fixed} />
+        )}
+        <S.MenuTrigger onClick={toggleMenu}>
+          <Icon color="#c3c1c1" size="18px">
+            menu
+          </Icon>
+        </S.MenuTrigger>
+      </S.TitleBox>
+    )
   );
 };
 

@@ -24,9 +24,21 @@ export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   width: 50vw;
-  @media (min-width: 768px) {
+  /* ????????????? */
+  z-index: 1049;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  transition: -webkit-transform 0.3s ease-out 0s;
+  will-change: transform;
+  overflow-y: auto;
+  width: 600px;
+  background-color: rgb(38, 50, 56);
+  left: 0px;
+  transform: translateX(0%);
+  @media (min-width: 992px) {
     width: 300px;
-    position: fixed;
+    position: static;
   }
 `;
 

@@ -15,7 +15,7 @@ export const Container = styled.div`
     width: 90%;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     border: 30px solid ${({ theme }) => theme.background.action};
     padding: 70px;
   }

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-export const TitleBox = styled.div` 
+export const TitleBox = styled.div`
   display: flex;
   align-items: center;
   position: fixed;
   top: 0;
-  height: 60px; 
+  height: 60px;
   padding: 5px;
   min-height: 60px;
   align-items: center;
@@ -17,10 +17,11 @@ export const TitleBox = styled.div`
   border: none;
   flex: 1 1 100%;
   width: 100%;
-  margin-left: ${({ menuOpen }) => menuOpen ? '100%' : 0};
-  transition:  ${({ menuOpen }) => !menuOpen ? 'margin .2s linear' : 'none'}  ;
-  
-  @media (min-width: 768px) {     
+  /* margin-left: ${({ menuOpen }) => (menuOpen ? '100%' : 0)};
+  transition: ${({ menuOpen }) =>
+    !menuOpen ? 'margin .2s linear' : 'none'}; */
+
+  @media (min-width: 992px) {
     position: static;
     justify-content: center;
     height: auto;
@@ -38,20 +39,20 @@ export const Title = styled.span`
 export const MenuTrigger = styled.span`
   padding: 0 20px;
   text-transform: lowercase;
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     display: none;
   }
 `;
 
 export const Img = styled.img`
-    display: none;
-    width: 54%;
-    z-index: 123;
-    margin-left: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  display: none;
+  width: 54%;
+  z-index: 123;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
-    @media (min-width: 768px) {     
-      display: flex;
-    }
+  @media (min-width: 992px) {
+    display: flex;
+  }
 `;

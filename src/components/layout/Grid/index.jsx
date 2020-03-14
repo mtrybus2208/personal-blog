@@ -13,14 +13,15 @@ const Grid = styled.div`
   background: ${props => props.theme.background.base};
   position: relative;
   transition: margin 0.2s linear;
-  margin-left: ${({ menuOpen }) => (menuOpen ? '-100%' : 0)};
-  overflow: ${({ menuOpen }) => (!menuOpen ? 'hidden' : 'unset')};
+  overflow: hidden;
+  /* margin-left: ${({ menuOpen }) => (menuOpen ? '-100%' : 0)};
+  overflow: ${({ menuOpen }) => (!menuOpen ? 'hidden' : 'unset')}; */
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     grid-template-columns: 250px 1fr;
     grid-template-rows: 60px 1fr;
     grid-template-areas:
-      'sidebar header'
+      'header header'
       'sidebar content'
       'sidebar content';
     margin-left: 0;
@@ -41,7 +42,7 @@ Grid.SidebarArea = styled.div`
   z-index: 10;
   background: ${props => props.theme.background.base};
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     left: 0;
     grid-area: sidebar;
   }
@@ -50,7 +51,7 @@ Grid.SidebarArea = styled.div`
 Grid.HeaderArea = styled.div`
   grid-area: menu;
   position: relative;
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     grid-area: header;
     margin-left: 0;
   }
@@ -59,7 +60,7 @@ Grid.HeaderArea = styled.div`
 Grid.ContentArea = styled.div`
   grid-area: content;
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     grid-area: content;
   }
 `;
